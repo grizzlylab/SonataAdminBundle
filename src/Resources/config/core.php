@@ -163,7 +163,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->set('sonata.admin.controller.crud', CRUDController::class)
             ->public()
             ->tag('container.service_subscriber')
-            ->call('setContainer', [new ReferenceConfigurator(ContainerInterface::class)])
+            ->call('setContainer', [
+                new ReferenceConfigurator('service_container'),
+            ])
 
         ->set('sonata.admin.event.extension', AdminEventExtension::class)
             ->public()
